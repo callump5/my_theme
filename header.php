@@ -22,20 +22,29 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">My Theme</a>
+                <a class="navbar-brand" href="<?php echo get_bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <?php wp_list_pages('title_li=') ?>
-                    </ul>
-                </div>
+                <?php wp_nav_menu( array( 'theme_location' => 'new-menu', 'container_class' => 'navbar-nav ml-auto' ) ); ?>
             </div>
         </nav>
 
         <div id="page">
+
+
+            <?php
+
+        $front = get_cat_ID('front');
+        $category_id = get_cat_ID('Category Name');
+        $myquery = array(
+        'posts_per_page' => 30,
+        'cat' => -$front
+        );
+        query_posts($myquery);
+
+            ?>
 
 
 
