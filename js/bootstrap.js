@@ -2284,12 +2284,12 @@ var Modal = function ($$$1) {
       if (this._isBodyOverflowing) {
         // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
-        // Adjust fixed page-content.php padding
+        // Adjust fixed page-single-content.php padding
         $$$1(Selector.FIXED_CONTENT).each(function (index, element) {
           var actualPadding = $$$1(element)[0].style.paddingRight;
           var calculatedPadding = $$$1(element).css('padding-right');
           $$$1(element).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px");
-        }); // Adjust sticky page-content.php margin
+        }); // Adjust sticky page-single-content.php margin
 
         $$$1(Selector.STICKY_CONTENT).each(function (index, element) {
           var actualMargin = $$$1(element)[0].style.marginRight;
@@ -2310,14 +2310,14 @@ var Modal = function ($$$1) {
     };
 
     _proto._resetScrollbar = function _resetScrollbar() {
-      // Restore fixed page-content.php padding
+      // Restore fixed page-single-content.php padding
       $$$1(Selector.FIXED_CONTENT).each(function (index, element) {
         var padding = $$$1(element).data('padding-right');
 
         if (typeof padding !== 'undefined') {
           $$$1(element).css('padding-right', padding).removeData('padding-right');
         }
-      }); // Restore sticky page-content.php and navbar-toggler margin
+      }); // Restore sticky page-single-content.php and navbar-toggler margin
 
       $$$1(Selector.STICKY_CONTENT + ", " + Selector.NAVBAR_TOGGLER).each(function (index, element) {
         var margin = $$$1(element).data('margin-right');
@@ -3199,7 +3199,7 @@ var Popover = function ($$$1) {
 
 
     _proto._getContent = function _getContent() {
-      return this.element.getAttribute('data-page-content.php') || this.config.content;
+      return this.element.getAttribute('data-page-single-content.php') || this.config.content;
     };
 
     _proto._cleanTipClass = function _cleanTipClass() {

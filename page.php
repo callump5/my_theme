@@ -1,19 +1,14 @@
+ <?php get_header() ; ?>
 
+   <?php
+            if ( is_page('Gallery') ):
+                get_template_part( 'gallery' );
+            elseif ( have_posts() ) :
+                    while ( have_posts() ) :
+                        the_post();
+                            get_template_part( 'template_parts/page-content', get_post_format() );
+                    endwhile;
+                endif;
+        ?>
 
-    <?php get_header() ; ?>
-
-
-    <div class="front-panel container">
-
-
-
-
-            <div class="front-post col-sm-4">
-                <h1><?php the_title() ; ?> </h1>
-                <p><?php the_excerpt() ; ?><p></p>
-            </div>
-
-    </div>
-
-
-    <?php get_footer() ; ?>
+ <?php get_footer(); ?>

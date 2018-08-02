@@ -1,6 +1,39 @@
+/***************************************************************************************/
+/** Style Index*************************************************************************/
+/***************************************************************************************/
 /*
+Style Index -
+    1 - Variables
+    2 - Other Fonts
+    3 - Fonts
+    4 - Nav
+    5 - Index
+    6 - Posts
+        a - Gallery Post
+        b - Page Post
+        c - Singular Post
+    7 - Responsive (600width)
+        a - Nav
+        b - Index
+        c - Post
+ */
 
 
+/***************************************************************************************/
+/** Variables** ************************************************************************/
+/***************************************************************************************/
+:root {
+    --imageHeight: 30vh;
+    --pageHeight: calc(71vh - 70px);
+}
+
+
+
+/***************************************************************************************/
+/** Other Fonts ************************************************************************/
+/***************************************************************************************/
+
+/*
     font-family: 'Dancing Script', cursive;
 
     font-family: 'Poiret One', cursive;
@@ -8,39 +41,33 @@
     font-family: 'Satisfy', cursive;
 
     font-family: 'Courgette', cursive;
-
-
  */
+
+
+/***************************************************************************************/
+/** Fonts ******************************************************************************/
+/***************************************************************************************/
 
 a, h1, p, ul, li  {
     font-family: 'Poiret One', cursive;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .navbar-brand {
     font-size: 32px;
 }
 
-p, a {
-font-size: 24px
+#page h1 a{
+    font-size: 30px;
 }
-
-
-.front-post-title a {
+.categories h1 a, .post h1 a  {
     font-size: 30px;
 }
 
 
-body {
-    background-image: url("css/imgs/back1.jpg");
-    background-repeat: no-repeat;
-    background-position-x: 0;
-    background-position-y: -120px ;
-    background-size: 100vw auto;
-    background-color: #7a7d84;
-    background-blend-mode: multiply;
-
-}
+/***************************************************************************************/
+/** Nav ********************************************************************************/
+/***************************************************************************************/
 
 .navbar, .bg-light{
     background-color: transparent !important;
@@ -48,76 +75,174 @@ body {
 
 .navbar-light a, .navbar-brand a{
     font-family: 'Satisfy', cursive;
-
     color: white !important;:
 }
-
-.navbar-nav {
-    width: 40vw;
-    display: flex;
-    flex-direction: row;
-}
-#menu-top-menu {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: flex-end;
+.navbar-collapse {
+    align-items: normal;
 }
 
-
-#menu-top-menu li {
-    margin: 0 30px;
+.navbar-toggler {
+    background-color: white;
+    color: white;
+}
+.nav-link {
+    margin: 20px ;
 }
 
-#menu-top-menu li:last-child {
-    margin: 0 0 0 30px;
-}
-.sub-menu {
-    display: none;
+
+
+/***************************************************************************************/
+/** Index ******************************************************************************/
+/***************************************************************************************/
+
+body {
+    background-image: url("css/imgs/back1.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -10px ;
+    background-size: 100vw auto;
+    background-color: #7a7d84;
+    background-blend-mode: multiply;
 }
 
 #page {
     background-color: white;
-    margin-top: 40vh;
-    min-height: 60vh;
-    padding-bottom: 20px;
-
-
+    min-height: var(--pageHeight);
+    padding: 20px 0;
+}
+#page h1 {
+    margin-bottom: 20px;
 }
 .front-panel {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 20px 0;
     flex-wrap: wrap;
-
+    min-width: 50vh;
 
 }
 
-.front-post {
+/****************************************************************************************/
+/** Posts ******************************************************************************/
+/***************************************************************************************/
+
+
+/* Page Content */
+.page-post {
+    padding: 15px;
+}
+.page-post {
+    line-height: 2em;
+}
+
+
+/* Post */
+.categories, .col-sm-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.categories h1{
+    padding-top: 15px;
     text-align: center;
-    padding: 10px 20px;
-    margin-bottom: 20px;
 }
-.front-post h1 {
-    padding-bottom: 20px;
-}
-.front-post img {
+.categories img{
     width: 250px;
     height: 213px;
     padding-bottom: 20px;
 }
 
 
-.page-post {
-    padding: 15px;
+/* Single Post */
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-content h1 {
+    margin-bottom: 15px;
+}
+.post-content p {
+    padding-bottom: 15px;
+    line-height:1.4em;
+    text-align: center;
+}
+.post-content p:first-child{
+    display: none;
+}
+.post-content img {
+    margin-bottom: 20px;
+    width: 250px;
+    height: 213px;
 }
 
-.page-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
 
-.page-post {
-    line-height: 2em;
+/****************************************************************************************/
+/** Responsive  *************************************************************************/
+/****************************************************************************************/
+
+@media screen and (min-width: 700px) {
+
+    /* Nav */
+    .navbar-nav {
+        width: 50%;
+
+    }
+
+    #menu-top-menu {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Index */
+
+    #page {
+        margin-top: var(--imageHeight);
+    }
+
+    body {
+        background-position-x: 0;
+        background-position-y: -100px ;
+    }
+
+    .front-panel {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Posts */
+    .post {
+        flex-direction: column;
+        width: 70vw;
+    }
+
+    .post-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .page-post {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .post img{
+        margin-right: 20px;
+    }
+
+
+
+
 }

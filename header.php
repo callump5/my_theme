@@ -20,32 +20,26 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="<?php echo get_bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="<?php echo get_bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <?php wp_nav_menu( array( 'theme_location' => 'new-menu', 'container_class' => 'navbar-nav ml-auto' ) ); ?>
-            </div>
-        </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <?php wp_nav_menu( array( 'theme_location' => 'new-menu', 'container_class' => 'collapse navbar-collapse navbar-nav  ' ) ); ?>
+            </ul>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        jQuery('.navbar-nav').attr('id', 'navbarSupportedContent');
+    </script>
+
 
         <div id="page">
-
-
-            <?php
-
-        $front = get_cat_ID('front');
-        $category_id = get_cat_ID('Category Name');
-        $myquery = array(
-        'posts_per_page' => 30,
-        'cat' => -$front
-        );
-        query_posts($myquery);
-
-            ?>
-
+            <div class="front-panel">
 
 
 

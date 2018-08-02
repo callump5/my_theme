@@ -1281,7 +1281,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		assert(function( el ) {
 			// Select is set to empty string on purpose
 			// This is to test IE's treatment of not explicitly
-			// setting a boolean page-content.php attribute,
+			// setting a boolean page-single-content.php attribute,
 			// since its presence should be enough
 			// https://bugs.jquery.com/ticket/12359
 			docElem.appendChild( el ).innerHTML = "<a id='" + expando + "'></a>" +
@@ -2066,7 +2066,7 @@ Expr = Sizzle.selectors = {
 		// Contents
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or page-content.php nodes (text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by element (1) or page-single-content.php nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -4795,7 +4795,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				wrap = wrapMap[ tag ] || wrapMap._default;
 				tmp.innerHTML = wrap[ 1 ] + jQuery.htmlPrefilter( elem ) + wrap[ 2 ];
 
-				// Descend through wrappers to the right page-content.php
+				// Descend through wrappers to the right page-single-content.php
 				j = wrap[ 0 ];
 				while ( j-- ) {
 					tmp = tmp.lastChild;
@@ -5739,7 +5739,7 @@ function domManip( collection, args, callback, ignored ) {
 			fragment = first;
 		}
 
-		// Require either new page-content.php or an interest in ignored elements to invoke the callback
+		// Require either new page-single-content.php or an interest in ignored elements to invoke the callback
 		if ( first || ignored ) {
 			scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
 			hasScripts = scripts.length;
@@ -6023,7 +6023,7 @@ jQuery.fn.extend( {
 	replaceWith: function() {
 		var ignored = [];
 
-		// Make the changes, replacing each non-ignored context element with the new page-content.php
+		// Make the changes, replacing each non-ignored context element with the new page-single-content.php
 		return domManip( this, arguments, function( elem ) {
 			var parent = this.parentNode;
 
@@ -6316,7 +6316,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 
 		if ( isBorderBox ) {
 
-			// border-box includes padding, so remove it if we want page-content.php
+			// border-box includes padding, so remove it if we want page-single-content.php
 			if ( extra === "content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
@@ -6327,10 +6327,10 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 			}
 		} else {
 
-			// At this point, extra isn't page-content.php, so add padding
+			// At this point, extra isn't page-single-content.php, so add padding
 			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 
-			// At this point, extra isn't page-content.php nor padding, so add border
+			// At this point, extra isn't page-single-content.php nor padding, so add border
 			if ( extra !== "padding" ) {
 				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
@@ -8610,7 +8610,7 @@ function ajaxExtend( target, src ) {
 }
 
 /* Handles responses to an ajax request:
- * - finds the right dataType (mediates between page-content.php-type and expected dataType)
+ * - finds the right dataType (mediates between page-single-content.php-type and expected dataType)
  * - returns the corresponding response
  */
 function ajaxHandleResponses( s, jqXHR, responses ) {
@@ -8619,7 +8619,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		contents = s.contents,
 		dataTypes = s.dataTypes;
 
-	// Remove auto dataType and get page-content.php-type in the process
+	// Remove auto dataType and get page-single-content.php-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
@@ -8627,7 +8627,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		}
 	}
 
-	// Check if we're dealing with a known page-content.php-type
+	// Check if we're dealing with a known page-single-content.php-type
 	if ( ct ) {
 		for ( type in contents ) {
 			if ( contents[ type ] && contents[ type ].test( ct ) ) {
@@ -8959,7 +8959,7 @@ jQuery.extend( {
 					return this;
 				},
 
-				// Overrides response page-content.php-type header
+				// Overrides response page-single-content.php-type header
 				overrideMimeType: function( type ) {
 					if ( completed == null ) {
 						s.mimeType = type;
@@ -9060,7 +9060,7 @@ jQuery.extend( {
 		// Uppercase the type
 		s.type = s.type.toUpperCase();
 
-		// Determine if request has page-content.php
+		// Determine if request has page-single-content.php
 		s.hasContent = !rnoContent.test( s.type );
 
 		// Save the URL in case we're toying with the If-Modified-Since
@@ -9068,7 +9068,7 @@ jQuery.extend( {
 		// Remove hash to simplify url manipulation
 		cacheURL = s.url.replace( rhash, "" );
 
-		// More options handling for requests with no page-content.php
+		// More options handling for requests with no page-single-content.php
 		if ( !s.hasContent ) {
 
 			// Remember the hash so we can put it back
@@ -9091,7 +9091,7 @@ jQuery.extend( {
 			// Put hash and anti-cache on the URL that will be requested (gh-1732)
 			s.url = cacheURL + uncached;
 
-		// Change '%20' to '+' if this is encoded form body page-content.php (gh-2658)
+		// Change '%20' to '+' if this is encoded form body page-single-content.php (gh-2658)
 		} else if ( s.data && s.processData &&
 			( s.contentType || "" ).indexOf( "application/x-www-form-urlencoded" ) === 0 ) {
 			s.data = s.data.replace( r20, "+" );
@@ -9236,7 +9236,7 @@ jQuery.extend( {
 					}
 				}
 
-				// if no page-content.php
+				// if no page-single-content.php
 				if ( status === 204 || s.type === "HEAD" ) {
 					statusText = "nocontent";
 

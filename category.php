@@ -1,16 +1,24 @@
-<?php get_header() ?>
+
+    <?php get_header() ; ?>
 
 
-    <div class="front-panel container">
-
-        <?php
-            if ( have_posts() ) :
+   <?php
+    if ( have_posts() ) :
                     while ( have_posts() ) :
                         the_post();
-
-                            get_template_part( 'content', get_post_format() );
+                            get_template_part( 'template_parts/gallery-content', get_post_format() );
                     endwhile;
                 endif;
-        ?>
-    </div>
-<?php get_footer() ?>
+    ?>
+
+    <?php get_footer() ; ?>
+
+<script type="text/javascript">
+
+    jQuery('.categories').each(function () {
+        jQuery(this).find('img').appendTo(this);
+        jQuery(this).find('p').remove();
+
+    })
+
+</script>
